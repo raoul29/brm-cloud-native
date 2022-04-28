@@ -1,0 +1,62 @@
+# Copyright (c) 2021 Oracle Corporation and/or its affiliates. All rights reserved.
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps5/"
+imagePullSecrets: "brm-registry"
+uniPass: "QzFHMmIzdTQjIw=="
+
+db:    
+    host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
+    port: 1521
+    user: sys
+    password: cGluREI5OSMjCg==
+    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
+ocbrm:
+    db:
+        schemauser: pin
+        schemapass: QzFHMmIzdTQjIw==
+        schematablespace: pin00
+        indextablespace: pinx00
+        pipelineschemauser: pin
+    cm:
+        deployment:
+            enable_publish: 0
+    eai_js:
+        deployment:
+            eaiConfigFile: payloadconfig_ifw_sync.xml
+    storage_class:
+        name: nfs
+    nfs_provisioner:
+        provisioner: cluster.local/nfs-provisioner-nfs-server-provisioner 
+    batchpipe:
+        isEnabled: false
+ocpdc:
+     configEnv:
+         rcuPrefix: rcupdc
+         pdcSchemaUserName: pdc
+         crossRefSchemaUserName: xref
+         pdcAdminUser: pdcuser
+         transformation:
+             supportECE: true
+             isClearBRMSeedData: true
+             upgrade: false
+         syncPDC:
+             upgradeFromPS2: false
+     service:
+         type: "ClusterIP"
+ocbc:
+    bc:
+        configEnv:
+            ldapSkip: true
+            isOPSS: false
+    bcws:
+        configEnv:
+            ldapSkip: true
+            isOPSS: false
+ocboc:
+    boc:
+        isEnabled: false
+ocpcc:
+    pcc:
+        isEnabled: false
+ocrsm:
+    rsm:
+        isEnabled: false

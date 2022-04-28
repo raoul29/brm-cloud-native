@@ -1,0 +1,30 @@
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps5/"
+imagePullSecrets: "brm-registry"
+secretEnv:
+  uniPass: "QzFHMmIzdTQjIw=="
+  PERSISTENCEDBAPASSWORD:
+     - schema: 1
+       PASSWORD: "cGluREI5OSMjCg=="
+db:
+  brm:
+    hostName: "dbvm.sub3b8b1321d.cluster1.oraclevcn.com"
+    port: "1521"
+    sid: "PINPDB"
+    service: "PINPDB.sub3b8b1321d.cluster1.oraclevcn.com"
+    userName: "pin"
+    jdbcUrl: "jdbc:oracle:thin:@dbvm.sub3b8b1321d.cluster1.oraclevcn.com:1521/PINPDB.sub3b8b1321d.cluster1.oraclevcn.com"
+  ece:
+    hostName: "dbvm.sub3b8b1321d.cluster1.oraclevcn.com"
+    port: "1521"
+    sid: "PINPDB"
+    service: "PINPDB.sub3b8b1321d.cluster1.oraclevcn.com"
+    userName: "ece"
+    jdbcUrl: "jdbc:oracle:thin:@dbvm.sub3b8b1321d.cluster1.oraclevcn.com:1521/PINPDB.sub3b8b1321d.cluster1.oraclevcn.com"
+migration:
+  pricingUpdater:
+    hostName: "pdc-service"
+    port: "8001"
+    userName: "weblogic"
+    connectionURL: "t3://pdc-service:8001"
+storageClass:
+  name: "nfs"

@@ -1,0 +1,41 @@
+/account: /event/billing/product/fee/cycle/cycle_forward_monthly: Monthly Cycle Forward Event : 1 : month
+5G_event.podl 5G_event.podl : /event/billing/product/fee/cycle/cycle_forward_arrear:  Cycle Forward Arrear Event : 1 : month
+5G_event.podl 5G_event.podl : /event/billing/product/fee/cycle/cycle_forward_bimonthly: Bimonthly Cycle Forward Event : 2 : month
+5G_event.podl 5G_event.podl : /event/billing/product/fee/cycle/cycle_forward_quarterly: Quarterly Cycle Forward Event : 3 : month
+5G_event.podl 5G_event.podl : /event/billing/product/fee/cycle/cycle_forward_semiannual: Semiannual Cycle Forward Event : 6 : month
+5G_event.podl 5G_event.podl : /event/billing/product/fee/cycle/cycle_forward_annual: Annual Cycle Forward Event : 1 : year
+5G_event.podl 5G_event.podl : /event/billing/product/fee/cycle/cycle_arrear: Monthly Cycle Arrear Event : 1 : month
+5G_event.podl 5G_event.podl : /event/billing/cycle/rollover/monthly: Monthly Cycle Rollover Event : 1 : month
+5G_event.podl 5G_event.podl : /event/billing/product/fee/purchase: Product Purchase Fee Event
+5G_event.podl 5G_event.podl : /event/billing/product/fee/cancel: Product Cancel Fee Event
+5G_event.podl 5G_event.podl : /event/billing/cycle/fold: Cycle Fold Event : 1
+5G_event.podl 5G_event.podl : /event/billing/cycle/discount: Billing Time Discount Event : 1
+5G_event.podl 5G_event.podl : /event/billing/cycle/discount/mostcalled: MostCalled Billing Time Discount Event : 1
+#======================================================================
+/account: /event/billing/remittance : Remittance Event
+/service/ip: /event/session/dialup: IP Dialup Event
+#======================================================================
+/service/telephony      : /event/session/ipt/call: IPT Call Session Event
+/service/broadband: /event/broadband/usage: NARUS Flow Event
+/service/stream   5G_event.podl : /event/broadband/usage: NARUS Stream Event
+/service/content        : /event/activity/content       : CONTENT activity
+#======================================================================
+/service/settlement/roaming/outcollect   : /event/delayed/session/telco/roaming   :Roaming Settlement Event
+/service/settlement/roaming/incollect    : /event/delayed/session/telco/roaming   :Roaming Settlement Event
+
+#====================================================================================================
+# Telco Service Event Mapping
+#====================================================================================================
+/service/telco: /event/delayed/session/telco: Delayed Telco Session
+/service/telco: /event/activity/telco: Real Time Telco Activity
+/service/telco: /event/delayed/activity/telco: Delayed Telco Activity
+
+#====================================================================================================
+# Telco GPRS Service Event and Delayed Event Mapping
+#====================================================================================================
+/service/telco/gprs:5G_event.podl /event/session/telco/gprs: Real Time Telco GPRS session
+5G_event.podl 5G_event.podl 5G_event.podl :5G_event.podl /event/session/telco/gprs/master: Real Time Telco GPRS master session
+5G_event.podl 5G_event.podl 5G_event.podl :5G_event.podl /event/session/telco/gprs/subsession: Real Time Telco GPRS subsession
+5G_event.podl 5G_event.podl 5G_event.podl :5G_event.podl /event/delayed/session/telco/gprs: Delayed Telco GPRS session
+
+/account                        : /event/delayed/session/telco/gprs/5G : Dummy mapping

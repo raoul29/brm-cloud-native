@@ -1,0 +1,59 @@
+STORABLE CLASS /event/delayed/session/telco/gprs/5G {
+
+        READ_ACCESS = "BrandLineage";
+        WRITE_ACCESS = "BrandLineage";
+        DESCR = "5G event class extension";
+        IS_PARTITIONED = "1";
+        PARTITION_MODE = "Finite";
+        EVENT_TYPE = "USAGE_POSTPAID";
+
+        #===================
+        #  Fields 
+        #===================
+
+        SUBSTRUCT PIN_FLD_REQUEST_INFO {
+
+                DESCR = "The structure describing the specific GPRS attributes for G-CDRs and S-CDRs";
+                ORDER = 0;
+                AUDITABLE = 0;
+                ENCRYPTABLE = 0;
+                SERIALIZABLE = 0;
+
+                #===================
+                #  Fields 
+                #===================
+
+                INT PIN_FLD_CATEGORY_ID {
+
+                        DESCR = "category id";
+                        ORDER = 12;
+                        CREATE = Optional;
+                        MODIFY = Writeable;
+                        AUDITABLE = 0;
+                        ENCRYPTABLE = 0;
+                        SERIALIZABLE = 0;
+                }
+        }
+}
+
+
+STORABLE CLASS /event/delayed/session/telco/gprs/5G IMPLEMENTATION ORACLE7 {
+
+        #===================
+        #  Fields 
+        #===================
+
+        SUBSTRUCT PIN_FLD_REQUEST_INFO {
+
+                SQL_TABLE = "event_dl_session_telco_req_t";
+
+                #===================
+                #  Fields  
+                #===================
+
+                INT PIN_FLD_CATEGORY_ID {
+
+                        SQL_COLUMN = "category";
+                }
+        }
+}

@@ -1,0 +1,7 @@
+ocpdc:
+    configEnv:
+        importExport:
+            IE_Operation: import
+            IE_Component: config
+            IE_FileName: Config4_sample.xml
+            extraCmdLineArgs: -ow
