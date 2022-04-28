@@ -33,6 +33,9 @@ This is an implementation-level course with hands on labs. Each student will be 
 - Create a custom BRM docker image to deploy a customization.
 - Deploy configuration and pricing using helm charts.
 
+The BRM installation created by students in this workshop will be as below:
+
+![Reference Architecture](https://github.com/raoul29/brm-cloud-native/blob/main/Architecture.png)
 
 
 ## Duration and Format:
