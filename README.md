@@ -50,4 +50,4 @@ This is an implementation-level course with hands on labs. Each student will be 
 
 ## Workshop guide
 
-If you are interested in attending this workshop, please contact us by email at communications-app- enablement_ww_grp@oracle.com.
+If you are interested in attending this workshop, please contact us by email at communications-app-enablement_ww_grp@oracle.com.
