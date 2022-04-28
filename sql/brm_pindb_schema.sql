@@ -1,0 +1,17 @@
+ALTER SESSION SET CONTAINER=pinpdb;
+create tablespace pin00 datafile '/u02/app/oracle/oradata/pin00.dbf' size 600M reuse autoextend on next 100M extent management local segment space management manual;
+create tablespace pinx00 datafile '/u02/app/oracle/oradata/pinx00.dbf' size 400M reuse autoextend on next 100M extent management local segment space management manual;
+create tablespace ecetable datafile '/u02/app/oracle/oradata/ece00.dbf' size 600M reuse autoextend on next 100M extent management local segment space management manual;
+create temporary tablespace ecetemp;
+create user pin identified by C1G2b3u4## default tablespace pin00 temporary tablespace TEMP quota unlimited on pin00 quota unlimited on pinx00;
+grant create public synonym , create synonym , drop public synonym , create view , create sequence , create table , create any index , create procedure , resource, connect, alter session, create database link to pin;
+grant unlimited tablespace to pin;
+grant execute on dbms_lock to pin;
+grant execute on dbms_aq to pin;
+grant execute on dbms_aqadm to pin;
+grant select on sys.gv_$aq to pin;
+create role INTEGRATE_ROLE_SEL;
+create role INTEGRATE_ROLE_ALL;
+grant INTEGRATE_ROLE_ALL to pin with admin option;
+grant INTEGRATE_ROLE_SEL to INTEGRATE_ROLE_ALL;
+quit;

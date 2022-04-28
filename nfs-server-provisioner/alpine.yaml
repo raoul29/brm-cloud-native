@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine1
+  labels:
+    app: alpine1
+spec:
+  containers:
+  - name: alpine
+    image: alpine
+    stdin: true
+    tty: true
+    volumeMounts:
+      - name: my-test-volume
+        mountPath: /var/test-volume # mount point in our container
+  volumes:
+    - name: my-test-volume
+      persistentVolumeClaim:
+        claimName: test-dynamic-volume-claim
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine2
+  labels:
+    app: alpine2
+spec:
+  containers:
+  - name: alpine
+    image: alpine
+    stdin: true
+    tty: true
+    volumeMounts:
+      - name: my-test-volume
+        mountPath: /var/test-volume # mount point in our container
+  volumes:
+    - name: my-test-volume
+      persistentVolumeClaim:
+        claimName: test-dynamic-volume-claim
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: test-dynamic-volume-claim
+spec:
+  storageClassName: "nfs"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi

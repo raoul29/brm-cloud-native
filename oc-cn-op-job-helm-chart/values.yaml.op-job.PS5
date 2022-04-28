@@ -1,0 +1,31 @@
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps5/"
+imagePullSecrets: "brm-registry"
+uniPass: "QzFHMmIzdTQjIw=="
+
+db:
+    host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
+    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
+    password: cGluREI5OSMjCg==
+
+ocbrm:
+    storage_class:
+        name: nfs
+
+ocboc:
+    boc:
+        isEnabled: false    # enable_boc
+
+ocbc:
+    bc:
+        configEnv:
+            isOPSS: false
+            ldapSkip: true
+    bcws:
+        isEnabled: true    # enable_bcws
+        configEnv:
+            isOPSS: false
+            ldapSkip: true
+
+ocpdc:
+     configEnv:
+         rcuPrefix: rcupdc
