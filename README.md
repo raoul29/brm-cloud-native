@@ -1,5 +1,4 @@
-# Deploying cloud native BRM
-
+# BRM cloud native workshop
 ## Summary
 
 Service providers and enterprises are increasingly looking to deploy cloud native architectures to modernize and automate their IT operations. BRM provides a cloud native deployment option, supporting Kubernetes-orchestrated containerized components to facilitate continuous integration/continuous delivery and DevOps practices. This allows increased agility and automation, higher availability and lower operating costs.
