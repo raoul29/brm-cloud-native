@@ -1,0 +1,12 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: cm-ingress
+spec:
+  entryPoints:
+  - cm-pcp
+  routes:
+  - match: HostSNI(`*`)
+    services:
+    - name: cm
+      port: 11960
