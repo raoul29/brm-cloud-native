@@ -1,0 +1,43 @@
+ports:
+  traefik:
+    expose: true
+  web:
+    port: 8000
+    expose: true
+    exposedPort: 80
+    protocol: TCP
+  websecure:
+    port: 8443
+    expose: true
+    exposedPort: 443
+    protocol: TCP
+  grafana:
+    port: 3000
+    expose: true
+    exposedPort: 3000
+    protocol: TCP
+  kibana:
+    port: 4000
+    expose: true
+    exposedPort: 4000
+    protocol: TCP
+  http2gw:
+    port: 5000
+    expose: true
+    exposedPort: 5000
+    protocol: TCP
+  brmrsm:
+    port: 6000
+    expose: true
+    exposedPort: 6000
+    protocol: TCP
+  brmws:
+    port: 7000
+    expose: true
+    exposedPort: 7000
+    protocol: TCP
+  cm-pcp:
+    port: 11960
+    expose: true
+    exposedPort: 11960
+    protocol: TCP
