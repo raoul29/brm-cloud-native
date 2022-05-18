@@ -23,6 +23,7 @@ ocbrm:
         deployment:
             eaiConfigFile: payloadconfig_ifw_sync.xml
     storage_class:
+        create: false
         name: rook-cephfs
     batchpipe:
         isEnabled: false
