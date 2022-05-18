@@ -1,5 +1,5 @@
 # Copyright (c) 2021 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps5/"
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps6/"
 imagePullSecrets: "brm-registry"
 uniPass: "QzFHMmIzdTQjIw=="
 
@@ -23,9 +23,7 @@ ocbrm:
         deployment:
             eaiConfigFile: payloadconfig_ifw_sync.xml
     storage_class:
-        name: nfs
-    nfs_provisioner:
-        provisioner: cluster.local/nfs-provisioner-nfs-server-provisioner 
+        name: rook-cephfs
     batchpipe:
         isEnabled: false
 ocpdc:
