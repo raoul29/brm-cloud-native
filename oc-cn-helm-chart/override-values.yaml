@@ -25,6 +25,8 @@ ocbrm:
     storage_class:
         create: false
         name: rook-cephfs
+    virtual_time:
+        enabled: true
     batchpipe:
         isEnabled: false
 ocpdc:
