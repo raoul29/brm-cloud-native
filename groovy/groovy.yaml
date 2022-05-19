@@ -21,7 +21,7 @@ apiVersion: v1
 metadata:
   name: groovy-volume-claim
 spec:
-  storageClassName: "nfs"
+  storageClassName: "rook-ceph"
   accessModes:
     - ReadWriteMany
   resources:
