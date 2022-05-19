@@ -27,4 +27,4 @@ migration:
     userName: "weblogic"
     connectionURL: "t3://pdc-service:8001"
 storageClass:
-  name: "rook-cpehfs"
+  name: "rook-cephfs"
