@@ -10,7 +10,7 @@ spec:
     tty: true
     volumeMounts:
       - name: groovy-volume
-        mountPath: /var/groovy-volume # mount point in our container
+        mountPath: /run # mount point in our container
   volumes:
     - name: groovy-volume
       persistentVolumeClaim:
@@ -21,7 +21,7 @@ apiVersion: v1
 metadata:
   name: groovy-volume-claim
 spec:
-  storageClassName: "rook-ceph"
+  storageClassName: "rook-cephfs"
   accessModes:
     - ReadWriteMany
   resources:
