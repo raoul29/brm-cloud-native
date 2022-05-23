@@ -1,0 +1,7 @@
+FROM iad.ocir.io/idqji4proemh/brmcn-ps6/cm:12.0.0.6.0
+
+USER root
+COPY lib/fm_cust_pol_custom.so /oms/lib/fm_cust_pol_custom.so
+RUN chown -R omsuser:root /oms/lib/fm_cust_pol_custom.so
+RUN chmod 755 /oms/lib/fm_cust_pol_custom.so
+USER omsuser
