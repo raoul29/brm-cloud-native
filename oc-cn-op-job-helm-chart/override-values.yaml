@@ -3,8 +3,8 @@ imagePullSecrets: "brm-registry"
 uniPass: "QzFHMmIzdTQjIw=="
 
 db:
-    host: dbvm.sub73a9c38a7.cluster1.oraclevcn.com
-    serviceName: PINPDB.sub73a9c38a7.cluster1.oraclevcn.com
+    host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
+    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
     password: cGluREI5OSMjCg==
     sslMode: 'NO'
 
