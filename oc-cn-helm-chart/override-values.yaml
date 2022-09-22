@@ -1,14 +1,15 @@
 # Copyright (c) 2021 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps6/"
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps7/"
 imagePullSecrets: "brm-registry"
 uniPass: "QzFHMmIzdTQjIw=="
 
 db:    
-    host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
+    host: dbvm.sub73a9c38a7.cluster1.oraclevcn.com
     port: 1521
     user: sys
     password: cGluREI5OSMjCg==
-    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
+    serviceName: PINPDB.sub73a9c38a7.cluster1.oraclevcn.com
+    sslMode: 'NO'
 ocbrm:
     db:
         schemauser: pin
@@ -18,10 +19,10 @@ ocbrm:
         pipelineschemauser: pin
     cm:
         deployment:
-            enable_publish: 0
+            enable_publish: 1
     eai_js:
         deployment:
-            eaiConfigFile: payloadconfig_ifw_sync.xml
+            eaiConfigFile: payloadconfig_ece_sync.xml
     storage_class:
         create: false
         name: rook-cephfs
@@ -29,20 +30,24 @@ ocbrm:
         enabled: true
     batchpipe:
         isEnabled: false
+
 ocpdc:
      configEnv:
-         rcuPrefix: rcupdc
+         rcuPrefix: rcupdc1
          pdcSchemaUserName: pdc
          crossRefSchemaUserName: xref
          pdcAdminUser: pdcuser
          transformation:
              supportECE: true
-             isClearBRMSeedData: true
+             isClearBRMSeedData: false 
              upgrade: false
          syncPDC:
              upgradeFromPS2: false
      service:
          type: "ClusterIP"
+     wop:
+         addOpssSecret: true
+         opssWalletSecretName: pdc-domain-opss-wallet-secret1
 ocbc:
     bc:
         configEnv:
@@ -61,3 +66,7 @@ ocpcc:
 ocrsm:
     rsm:
         isEnabled: false
+
+logging:
+    isEnabled: false 
+

@@ -1,11 +1,13 @@
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps6/"
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps7/"
 imagePullSecrets: "brm-registry"
 uniPass: "QzFHMmIzdTQjIw=="
 
 db:
-    host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
-    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
+    host: dbvm.sub73a9c38a7.cluster1.oraclevcn.com
+    serviceName: PINPDB.sub73a9c38a7.cluster1.oraclevcn.com
     password: cGluREI5OSMjCg==
+    sslMode: 'NO'
+
 
 ocbrm:
     storage_class:

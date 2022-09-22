@@ -1,5 +1,5 @@
 ocpdc:
-    configEnv:override:
+    configEnv:
         importExport:
            IE_Operation: publish
            IE_Component: all

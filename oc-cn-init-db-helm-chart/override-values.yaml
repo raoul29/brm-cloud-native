@@ -1,5 +1,5 @@
 # Copyright (c) 2020 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps6/"
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps7/"
 imagePullSecrets: "brm-registry"
 
 ocbrm:
@@ -9,11 +9,13 @@ ocbrm:
         server: "QzFHMmIzdTQjIw=="
         root: "QzFHMmIzdTQjIw=="
     db:
-        host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
+        host: dbvm.sub73a9c38a7.cluster1.oraclevcn.com 
         port: 1521
-        service: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com 
+        service: PINPDB.sub73a9c38a7.cluster1.oraclevcn.com 
         enable_partition: 'No'
         schemauser: pin
         schemapass: QzFHMmIzdTQjIw==
         schematablespace: pin00
         indextablespace: pinx00
+db:
+    sslMode: 'NO'
