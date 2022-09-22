@@ -39,15 +39,15 @@ ocpdc:
          pdcAdminUser: pdcuser
          transformation:
              supportECE: true
-             isClearBRMSeedData: false 
+             isClearBRMSeedData: true 
              upgrade: false
          syncPDC:
              upgradeFromPS2: false
      service:
          type: "ClusterIP"
      wop:
-         addOpssSecret: true
-         opssWalletSecretName: pdc-domain-opss-wallet-secret1
+         addOpssSecret: 
+         opssWalletSecretName: 
 ocbc:
     bc:
         configEnv:
