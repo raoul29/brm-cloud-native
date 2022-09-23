@@ -33,7 +33,7 @@ ocbrm:
 
 ocpdc:
      configEnv:
-         rcuPrefix: rcupdc1
+         rcuPrefix: rcupdc
          pdcSchemaUserName: pdc
          crossRefSchemaUserName: xref
          pdcAdminUser: pdcuser
