@@ -1,0 +1,984 @@
+# Copyright (c) 2021, 2022, Oracle and/or its affiliates.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-client-conf-config
+  namespace: kube-system 
+data:
+  fluent.conf: |-
+    <match fluent.**>
+      @type null
+    </match>
+    
+    <source>
+      @type tail
+      @id in_tail_ece_container_logs
+      path /var/log/containers/*_default_ece-*.log
+      pos_file /var/log/fluentd-ece-containers.log.pos
+      tag ece.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+     </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_cdrformatter_container_logs
+      path /var/log/containers/*cdrformatter*.log
+      pos_file /var/log/fluentd-cdrformatter-containers.log.pos
+      tag cdrformatter.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>    
+
+    <source>
+      @type tail
+      @id in_tail_ecs_container_logs
+      path /var/log/containers/*ecs*.log
+      pos_file /var/log/fluentd-ecs-containers.log.pos
+      tag ecs.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_RTP_container_logs
+      path /var/log/containers/*realtime*.log
+      pos_file /var/log/fluentd-RTP-containers.log.pos
+      tag RTP.*
+      read_from_head true
+      <parse>
+        @type none
+        #time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_WIREPIPE_container_logs
+      path /var/log/containers/*wireless*.log
+      pos_file /var/log/fluentd-WIREPIPE-containers.log.pos
+      tag WIREPIPE.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_ROAMPIPE_container_logs
+      path /var/log/containers/*roampipe*.log
+      pos_file /var/log/fluentd-ROAMPIPE-containers.log.pos
+      tag ROAMPIPE.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_configloader_container_logs
+      path /var/log/containers/*configloader*.log
+      pos_file /var/log/fluentd-configloader-containers.log.pos
+      tag configloader.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_pricingupdater_container_logs
+      path /var/log/containers/*pricingupdater*.log
+      pos_file /var/log/fluentd-pricingupdater-containers.log.pos
+      tag pricingupdater.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_customerupdaterloader_container_logs
+      path /var/log/containers/*customer*.log
+      pos_file /var/log/fluentd-customerupdaterloader-containers.log.pos
+      tag customer.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_ecegateway_container_logs
+      path /var/log/containers/*gateway*.log
+      pos_file /var/log/fluentd-ecegateway-containers.log.pos
+      tag ecegateway.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_ratedeventformatter_container_logs
+      path /var/log/containers/*ratedeventformatter*.log
+      pos_file /var/log/fluentd-ratedeventformatter-containers.log.pos
+      tag ratedeventformatter.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+ 
+    <source>
+      @type tail
+      @id in_tail_CM_container_logs
+      path /var/log/containers/*cm-*.log
+      exclude_path ["/var/log/containers/*eai-java-server*.log"]
+      pos_file /var/log/fluentd-CM-containers.log.pos
+      tag CM.*
+      read_from_head true
+      <parse>
+        @type none
+        #time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_EAI_container_logs
+      path /var/log/containers/*eai*.log
+      exclude_path ["/var/log/containers/*_cm-*.log"]
+      pos_file /var/log/fluentd-EAI-containers.log.pos
+      tag EAI.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_DM_container_logs
+      path /var/log/containers/*dm-*.log
+      pos_file /var/log/fluentd-DM-containers.log.pos
+      tag DM.*
+      read_from_head true
+      <parse>
+        @type none
+        #time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_REL_container_logs
+      path /var/log/containers/*rel-d*.log
+      pos_file /var/log/fluentd-REL-containers.log.pos
+      tag REL.*
+      read_from_head true
+      <parse>
+        @type none
+        #time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_FORMATTER_container_logs
+      path /var/log/containers/*formatter*.log
+      pos_file /var/log/fluentd-FORMATTER-containers.log.pos
+      tag FORMATTER.*
+      read_from_head true
+      <parse>
+        @type none
+       # time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_BATCH_container_logs
+      path /var/log/containers/*batch-controller*.log
+      pos_file /var/log/fluentd-BATCH-containers.log.pos
+      tag BATCH.*
+      read_from_head true
+      <parse>
+        @type none
+        #time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_BRMAPPS_container_logs
+      path /var/log/containers/*brm-apps*.log
+      pos_file /var/log/fluentd-BRMAPPS-containers.log.pos
+      tag BRMAPPS.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_PJE_container_logs
+      path /var/log/containers/*pje*.log
+      pos_file /var/log/fluentd-PJE-containers.log.pos
+      tag PJE.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+
+    <source>
+      @type tail
+      @id in_tail_CONFIGJOBS_container_logs
+      path /var/log/containers/*config-jobs*.log
+      pos_file /var/log/fluentd-CONFIGJOBS-containers.log.pos
+      tag CONFIGJOBS.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_DATABASE_container_logs
+      path /var/log/containers/*init-db*.log
+      exclude_path ["/var/log/containers/*upgrade*.log"]
+      pos_file /var/log/fluentd-DATABASE-containers.log.pos
+      tag DATABASE.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_UPGRADE_container_logs
+      path /var/log/containers/*upgrade*.log
+      exclude_path ["/var/log/containers/*init-db*.log"]
+      pos_file /var/log/fluentd-UPGRADE-containers.log.pos
+      tag UPGRADE.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_PDC_APP_container_logs
+      path /var/log/containers/*pdcapp*.log
+      pos_file /var/log/fluentd-PDC-APP-containers.log.pos
+      tag PDCAPP.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>  
+    
+    <source>
+      @type tail
+      @id in_tail_PDC_BRM_RRE_container_logs
+      path /var/log/containers/*pdcbrm-rre*.log
+      pos_file /var/log/fluentd-PDC-BRM-RRE-containers.log.pos
+      tag PDCBRM_RRE.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source> 
+    
+    <source>
+      @type tail
+      @id in_tail_PDC_BRM_BRE_container_logs
+      path /var/log/containers/*pdcbrm-bre*.log
+      pos_file /var/log/fluentd-PDC-BRM-BRE-containers.log.pos
+      tag PDCBRM_BRE.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source> 
+    
+    <source>
+      @type tail
+      @id in_tail_PDC_BRM_SYNCPDC_container_logs
+      path /var/log/containers/*pdcbrm-syncpdc*.log
+      pos_file /var/log/fluentd-PDC-BRM-SYNCPDC-containers.log.pos
+      tag PDCBRM_SYNCPDC.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source> 
+
+    <source>
+      @type tail
+      @id in_tail_PCC_APP_container_logs
+      path /var/log/containers/*pcc*.log
+      pos_file /var/log/fluentd-PCC-APP-containers.log.pos
+      tag PCCAPP.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+    
+     <source>
+      @type tail
+      @id in_tail_BRMRSM_APP_container_logs
+      path /var/log/containers/*brm-rest-services-manager*.log
+      pos_file /var/log/fluentd-BRMRSM-APP-containers.log.pos
+      tag BRMRSM.*
+      read_from_head true
+      <parse>
+        @type none
+      </parse>
+    </source>
+    
+     <source>
+      @type tail
+      @id in_tail_PDCRSM_APP_container_logs
+      path /var/log/containers/*pdcrsm*.log
+      pos_file /var/log/fluentd-PDCRSM-APP-containers.log.pos
+      tag PDCRSM.*
+      read_from_head true
+      <parse>
+        @type none
+      </parse>
+    </source>
+
+ 
+    <source>
+      @type tail
+      @id in_tail_OCOMC_ADMINSVR_container_logs
+      path /var/log/containers/*admin-server-app*.log
+      pos_file /var/log/fluentd-OCOMC_ADMINSVR-containers.log.pos
+      tag OCOMC_ADMINSVR.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_OCOMC_NODEMGR_container_logs
+      path /var/log/containers/*node-mgr-app*.log
+      pos_file /var/log/fluentd-OCOMC_NODEMGR-containers.log.pos
+      tag OCOMC_NODEMGR.*
+      read_from_head true
+      <parse>
+        @type none
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      @id in_tail_minion
+      path /var/log/salt/minion
+      pos_file /var/log/fluentd-salt.pos
+      tag salt
+      <parse>
+        @type regexp
+        expression /^(?<time>[^ ]* [^ ,]*)[^\[]*\[[^\]]*\]\[(?<severity>[^ \]]*) *\] (?<message>.*)$/
+        time_format %Y-%m-%d %H:%M:%S
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_startupscript
+      path /var/log/startupscript.log
+      pos_file /var/log/fluentd-startupscript.log.pos
+      tag startupscript
+      <parse>
+        @type syslog
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_docker
+      path /var/log/docker.log
+      pos_file /var/log/fluentd-docker.log.pos
+      tag docker
+      <parse>
+        @type regexp
+        expression /^time="(?<time>[^)]*)" level=(?<severity>[^ ]*) msg="(?<message>[^"]*)"( err="(?<error>[^"]*)")?( statusCode=($<status_code>\d+))?/
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_etcd
+      path /var/log/etcd.log
+      pos_file /var/log/fluentd-etcd.log.pos
+      tag etcd
+      <parse>
+        @type none
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_kubelet
+      multiline_flush_interval 5s
+      path /var/log/kubelet.log
+      pos_file /var/log/fluentd-kubelet.log.pos
+      tag kubelet
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_kube_proxy
+      multiline_flush_interval 5s
+      path /var/log/kube-proxy.log
+      pos_file /var/log/fluentd-kube-proxy.log.pos
+      tag kube-proxy
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_kube_apiserver
+      multiline_flush_interval 5s
+      path /var/log/kube-apiserver.log
+      pos_file /var/log/fluentd-kube-apiserver.log.pos
+      tag kube-apiserver
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_kube_controller_manager
+      multiline_flush_interval 5s
+      path /var/log/kube-controller-manager.log
+      pos_file /var/log/fluentd-kube-controller-manager.log.pos
+      tag kube-controller-manager
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_kube_scheduler
+      multiline_flush_interval 5s
+      path /var/log/kube-scheduler.log
+      pos_file /var/log/fluentd-kube-scheduler.log.pos
+      tag kube-scheduler
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_rescheduler
+      multiline_flush_interval 5s
+      path /var/log/rescheduler.log
+      pos_file /var/log/fluentd-rescheduler.log.pos
+      tag rescheduler
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_glbc
+      multiline_flush_interval 5s
+      path /var/log/glbc.log
+      pos_file /var/log/fluentd-glbc.log.pos
+      tag glbc
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+    
+    <source>
+      @type tail
+      @id in_tail_cluster_autoscaler
+      multiline_flush_interval 5s
+      path /var/log/cluster-autoscaler.log
+      pos_file /var/log/fluentd-cluster-autoscaler.log.pos
+      tag cluster-autoscaler
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+    
+    # Example:
+    # 2017-02-09T00:15:57.992775796Z AUDIT: id="90c73c7c-97d6-4b65-9461-f94606ff825f" ip="104.132.1.72" method="GET" user="kubecfg" as="<self>" asgr
+    oups="<lookup>" namespace="default" uri="/api/v1/namespaces/default/pods"
+    # 2017-02-09T00:15:57.993528822Z AUDIT: id="90c73c7c-97d6-4b65-9461-f94606ff825f" response="200"
+    <source>
+      @type tail
+      @id in_tail_kube_apiserver_audit
+      multiline_flush_interval 5s
+      path /var/log/kubernetes/kube-apiserver-audit.log
+      pos_file /var/log/kube-apiserver-audit.log.pos
+      tag kube-apiserver-audit
+      <parse>
+        @type multiline
+        format_firstline /^\S+\s+AUDIT:/
+        # Fields must be explicitly captured by name to be parsed into the record.
+        # Fields may not always be present, and order may change, so this just looks
+        # for a list of key="\"quoted\" value" pairs separated by spaces.
+        # Unknown fields are ignored.
+        # Note: We can't separate query/response lines as format1/format2 because
+        #       they don't always come one after the other for a given query.
+        format1 /^(?<time>\S+) AUDIT:(?: (?:id="(?<id>(?:[^"\\]|\\.)*)"|ip="(?<ip>(?:[^"\\]|\\.)*)"|method="(?<method>(?:[^"\\]|\\.)*)"|user="(?<user>(?:[^"\\]|\\.)*)"|groups="(?<groups>(?:[^"\\]|\\.)*)"|as="(?<as>(?:[^"\\]|\\.)*)"|asgroups="(?<asgroups>(?:[^"\\]|\\.)*)"|namespace="(?<namespace>(?:[^"\\]|\\.)*)"|uri="(?<uri>(?:[^"\\]|\\.)*)"|response="(?<response>(?:[^"\\]|\\.)*)"|\w+="(?:[^"\\]|\\.)*"))*/
+        time_format %Y-%m-%dT%T.%L%Z
+      </parse>
+    </source>
+    
+    <filter **>
+      @type kubernetes_metadata
+      @id filter_kube_metadata
+    </filter>
+
+    <filter ece**>
+      @type concat
+      @id ece_concat
+      stream_identity_key pod_name
+      key message
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter cdrformatter**>
+      @type concat
+      @id cdrformatter_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter ecs**>
+      @type concat
+      @id ecs_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter configloader**>
+      @type concat
+      @id configloader_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter pricingupdater**>
+      @type concat
+      @id pricingupdater_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter customer**>
+      @type concat
+      @id customerupdaterloader_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter ecegateway**>
+      @type concat
+      @id ecegateway_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter RTP**>
+      @type concat
+      @id rtp_concat
+      stream_identity_key pod_name
+      key message
+      separator "\n"
+      multiline_start_regexp /^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s+-----\u003e/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter WIREPIPE**>
+      @type concat
+      @id wirepipe_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s+-----\u003e/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+ 
+    <filter ROAMPIPE**>
+      @type concat
+      @id roampipe_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s+-----\u003e/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter ratedeventformatter**>
+      @type concat
+      @id ratedeventformatter_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter CM**>
+      @type concat
+      @id cm_concat
+      stream_identity_key pod_name
+      key message
+      separator "\n"
+      multiline_start_regexp /^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2} stderr F [EWD]/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter EAI**>
+      @type concat
+      @id eai_concat
+      stream_identity_key pod_name
+      key message
+      multiline_start_regexp /^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s+(Debug|Message|Warning|Error)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter DM**>
+      @type concat
+      @id dm_concat
+      stream_identity_key pod_name
+      key message
+      multiline_start_regexp /^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2} stderr F [EWD]/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter REL**>
+      @type concat
+      @id rel_concat
+      stream_identity_key pod_name
+      key message
+      multiline_start_regexp /^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s+(Debug|Message|Warning|Error)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter FORMATTER**>
+      @type concat
+      @id formatter_concat
+      stream_identity_key pod_name
+      key message
+      multiline_start_regexp /^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s+(Debug|Message|Warning|Error)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter BATCH**>
+      @type concat
+      @id batch_concat
+      stream_identity_key pod_name
+      key message
+      multiline_start_regexp /^\d{4}-\d{1,2}-\d{1,2}\T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s+(Debug|Message|Warning|Error)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter BRMAPPS**>
+      @type concat
+      @id brmapps_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<severity>\w+)\s+\D{3}\s+\D{3}\s+\d{1,2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter PJE**>
+      @type concat
+      @id pje_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<severity>\w+)\s+\D{3}\s+\D{3}\s+\d{1,2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter CONFIGJOBS**>
+      @type concat
+      @id configjobs_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<severity>\w+)\s+\D{3}\s+\D{3}\s+\d{1,2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter DATABASE**>
+      @type concat
+      @id database_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<severity>\w+)\s+\D{3}\s+\D{3}\s+\d{1,2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter UPGRADE**>
+      @type concat
+      @id upgrad_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<severity>\w+)\s+\D{3}\s+\D{3}\s+\d{1,2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+
+    <filter PDCAPP**>
+      @type concat
+      @id pdc_app_server_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<time>[A-Za-z]{3,4}\s+\d{2},\s+\d{4}\s+\d{1,2}:\d{2}:\d{2}\s+[A|P]M)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PDCAPP**>
+      @type concat
+      @id pdc_app_adminserver_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp  /^####(?<time><[A-Za-z]{3,4}\s+\d{2},\s+\d{4}\s+\d{1,2}:\d{2}:\d{2}\s+,\d+\s+[A|P]M UTC>)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PDCBRM-BRE**>
+      @type concat
+      @id pdc_brm_bre_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<time>[A-Za-z]{3,4}\s+\d{2},\s+\d{4}\s+\d{1,2}:\d{2}:\d{2}\s+[A|P]M)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PDCBRM-BRE**>
+      @type concat
+      @id pdc_brm_bre_utilities_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<severity>\w+)\s+\D{3}\s+\D{3}\s+\d{1,2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PDCBRM-RRE**>
+      @type concat
+      @id pdc_brm_rre_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<time>[A-Za-z]{3,4}\s+\d{2},\s+\d{4}\s+\d{1,2}:\d{2}:\d{2}\s+[A|P]M)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PDCBRM-RRE**>
+      @type concat
+      @id pdc_brm_rre_utilities_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<severity>\w+)\s+\D{3}\s+\D{3}\s+\d{1,2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PDCBRM-SYNCPDC**>
+      @type concat
+      @id pdc_brm_syncpdc_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<time>[A-Za-z]{3,4}\s+\d{2},\s+\d{4}\s+\d{1,2}:\d{2}:\d{2}\s+[A|P]M)/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PDCBRM-SYNCPDC**>
+      @type concat
+      @id pdc_brm_syncpdc_utilities_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp /^(?<severity>\w+)\s+\D{3}\s+\D{3}\s+\d{1,2}/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PCCAPP**>
+      @type concat
+      @id pcc_app_adminserver_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp  /^\d{4}-\d{1,2}-\d{1,2}T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s.*/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter BRMRSM**>
+      @type concat
+      @id brm_rsm_app_adminserver_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp  /^\d{4}-\d{1,2}-\d{1,2}T\d{2}:\d{2}:\d{2}\.\d{9}\+\d{2}:\d{2}\s+stdout\s+[A-Z]\s.*/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+    
+    <filter PDCRSM**>
+      @type concat
+      @id pdc_rsm_app_adminserver_concat
+      stream_identity_key pod_name
+      key log
+      multiline_start_regexp  /.*/
+      flush_interval 5
+      timeout_label @NORMAL
+    </filter>
+   
+    <filter OCOMC_ADMINSVR**>
+      @type concat
+      @id ocomc_adminsvr_concat
+      stream_identity_key pod_name
+      key log
+      use_first_timestamp true
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}|^\\u0009/
+      separator ""
+      flush_interval .1
+      timeout_label @NORMAL
+    </filter>
+
+    <filter OCOMC_NODEMGR**>
+      @type concat
+      @id ocomc_nodemgr_concat
+      stream_identity_key pod_name
+      key log
+      use_first_timestamp true
+      multiline_start_regexp /^\d{4}-\d{2}-\d{2}|^\\u0009/
+      separator ""
+      flush_interval .1
+      timeout_label @NORMAL
+    </filter>
+
+    <match **>
+      @type relabel
+      @label @NORMAL
+    </match>
+
+    <label @NORMAL>
+      <match **>
+        @type opensearch
+        @id out_os
+        @log_level info
+        include_tag_key true
+        host "#{ENV['FLUENT_OPENSEARCH_HOST'] || 'opensearch-cluster-master.logging'}"
+        hosts "#{ENV['FLUENT_OPENSEARCH_HOSTS'] || 'https://admin:admin@opensearch-cluster-master.logging:9200'}"
+        port "9200"
+        path ""
+        scheme "#{ENV['FLUENT_OPENSEARCH_SCHEME'] || 'https'}"
+        ssl_verify "#{ENV['FLUENT_OPENSEARCH_SSL_VERIFY'] || 'false'}"
+        ssl_version "#{ENV['FLUENT_OPENSEARCH_SSL_VERSION'] || 'TLSv1'}"
+        reload_connections "#{ENV['FLUENT_OPENSEARCH_RELOAD_CONNECTIONS'] || 'false'}"
+        reconnect_on_error "#{ENV['FLUENT_OPENSEARCH_RECONNECT_ON_ERROR'] || 'true'}"
+        reload_on_failure "#{ENV['FLUENT_OPENSEARCH_RELOAD_ON_FAILURE'] || 'true'}"
+        log_es_400_reason "#{ENV['FLUENT_OPENSEARCH_LOG_ES_400_REASON'] || 'false'}"
+        logstash_prefix "#{ENV['FLUENT_OPENSEARCH_LOGSTASH_PREFIX'] || 'logstash'}"
+        logstash_format "#{ENV['FLUENT_OPENSEARCH_LOGSTASH_FORMAT'] || 'true'}"
+        index_name "#{ENV['FLUENT_OPENSEARCH_LOGSTASH_INDEX_NAME'] || 'logstash'}"
+        type_name "#{ENV['FLUENT_OPENSEARCH_LOGSTASH_TYPE_NAME'] || 'fluentd'}"
+        <buffer>
+          flush_thread_count "#{ENV['FLUENT_OPENSEARCH_BUFFER_FLUSH_THREAD_COUNT'] || '8'}"
+          flush_interval "#{ENV['FLUENT_OPENSEARCH_BUFFER_FLUSH_INTERVAL'] || '5s'}"
+          chunk_limit_size "#{ENV['FLUENT_OPENSEARCH_BUFFER_CHUNK_LIMIT_SIZE'] || '2M'}"
+          queue_limit_length "#{ENV['FLUENT_OPENSEARCH_BUFFER_QUEUE_LIMIT_LENGTH'] || '32'}"
+          retry_max_interval "#{ENV['FLUENT_OPENSEARCH_BUFFER_RETRY_MAX_INTERVAL'] || '30'}"
+          retry_forever true
+        </buffer>      
+      </match>
+    </label>
