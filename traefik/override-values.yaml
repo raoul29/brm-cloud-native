@@ -16,7 +16,7 @@ ports:
     expose: true
     exposedPort: 3000
     protocol: TCP
-  kibana:
+  opensearch-dash:
     port: 4000
     expose: true
     exposedPort: 4000
