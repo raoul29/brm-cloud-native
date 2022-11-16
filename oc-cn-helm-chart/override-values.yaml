@@ -66,6 +66,14 @@ ocpcc:
 ocrsm:
     rsm:
         isEnabled: false
+        configEnv:
+            securityEnabled: false
+            hostName: 1.2.3.4
+            baseURL: 1.2.3.4
+            rsmCertificateFileName: keyStore.p12
+        service:
+            type: NodePort
+
 
 logging:
     isEnabled: false 
