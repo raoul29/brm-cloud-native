@@ -65,7 +65,7 @@ ocpcc:
         isEnabled: false
 ocrsm:
     rsm:
-        isEnabled: true 
+        isEnabled: false 
         configEnv:
             securityEnabled: false
             hostName: 1.2.3.4
