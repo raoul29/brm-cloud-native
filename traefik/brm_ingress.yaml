@@ -38,3 +38,13 @@ spec:
              name: bcws-domain-cluster-cluster-1
              port:
                number: 8001
+  - host: 
+    http:
+      paths:
+      - path: /brm
+        pathType: Prefix
+        backend:
+          service:
+             name: brm-rest-services-manager 
+             port:
+               number: 30000 
