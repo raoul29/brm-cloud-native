@@ -2,7 +2,8 @@ for node in `kubectl get nodes | grep node | awk '{print$1}'`
 do
 
 ssh -o "StrictHostKeyChecking no"  opc@$node << EOF
-sudo parted /dev/sda ---pretend-input-tty mkpart Fix Fix data 50GB 100GB
+sudo sgdisk /dev/sda -e
+sudo parted /dev/sda ---pretend-input-tty mkpart data ext2 50GB 100GB 
 exit
 EOF
 
