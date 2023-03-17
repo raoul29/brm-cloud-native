@@ -3,8 +3,8 @@ do
 
 ssh -o "StrictHostKeyChecking no"  opc@$node << EOF
 sudo sgdisk /dev/sda -e
-sudo parted /dev/sda ---pretend-input-tty mkpart data ext2 50GB 100GB
-#sudo parted /dev/sda ---pretend-input-tty mkpart Fix Fix data 50GB 100GB
+sudo parted /dev/sda ---pretend-input-tty resizepart 3 80GB 
+sudo parted /dev/sda ---pretend-input-tty mkpart data ext2 80GB 150GB
 exit
 EOF
 
