@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: groovy
-    image: groovy:latest
+    image: groovy:3.0.14
     stdin: true
     tty: true
     volumeMounts:
