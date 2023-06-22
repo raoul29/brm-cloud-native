@@ -1,5 +1,5 @@
 # Copyright (c) 2021 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps7/"
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
 imagePullSecrets: "brm-registry"
 uniPass: "QzFHMmIzdTQjIw=="
 
@@ -9,7 +9,8 @@ db:
     user: sys
     password: cGluREI5OSMjCg==
     serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
-    sslMode: 'NO'
+    role: sysdba
+    sslMode: "NO"
 ocbrm:
     db:
         schemauser: pin
@@ -48,15 +49,25 @@ ocpdc:
      wop:
          addOpssSecret: 
          opssWalletSecretName: 
+ocpdcrsm:
+    isEnabled: false
+    configEnv:
+        useT3s: false
+        isInboundOauthEnabled: false
+        httpClients: []
+    secretValue:
+        httpClients: []
 ocbc:
     bc:
+        isEnabled: false
         configEnv:
-            ldapSkip: true
             isOPSS: false
+            isLDAPEnabled: false
     bcws:
+        isEnabled: false
         configEnv:
-            ldapSkip: true
             isOPSS: false
+            isLDAPEnabled: false
 ocboc:
     boc:
         isEnabled: false

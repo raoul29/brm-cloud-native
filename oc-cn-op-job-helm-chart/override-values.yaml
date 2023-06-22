@@ -1,4 +1,4 @@
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps7/"
+imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
 imagePullSecrets: "brm-registry"
 uniPass: "QzFHMmIzdTQjIw=="
 
