@@ -1,33 +1,47 @@
 imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
 imagePullSecrets: "brm-registry"
 uniPass: "QzFHMmIzdTQjIw=="
-
 db:
-    host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
-    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
+    host: dbvm.workers.cluster1.oraclevcn.com
+    serviceName: PINPDB.workers.cluster1.oraclevcn.com
     password: cGluREI5OSMjCg==
     sslMode: 'NO'
-
-
 ocbrm:
     storage_class:
         name: rook-cephfs
-
-ocboc:
-    boc:
-        isEnabled: false    # enable_boc
-
 ocbc:
     bc:
         configEnv:
             isOPSS: false
             ldapSkip: true
+        deployment:
+            fmw:
+                imageRepository: iad.ocir.io/idqji4proemh/brmcn-ps8/
+                imageName: "middleware/fmw-infrastructure_cpu"
+                imageTag: ":12.0.0.8.0"
     bcws:
-        isEnabled: true    # enable_bcws
+        isEnabled: true
         configEnv:
             isOPSS: false
             ldapSkip: true
+        deployment:
+            fmw:
+                imageRepository: iad.ocir.io/idqji4proemh/brmcn-ps8/
+                imageName: "middleware/fmw-infrastructure_cpu"
+                imageTag: ":12.0.0.8.0"
+
+ocboc:
+    boc:
+        isEnabled: false
+        deployment:
+            fmw:
+                imageRepository: iad.ocir.io/idqji4proemh/brmcn-ps8/
+                imageName: middleware/fmw-infrastructure_cpu
+                imageTag: :12.0.0.8.0
+
 
 ocpdc:
      configEnv:
          rcuPrefix: rcupdc
+         crossRefSchemaUserName: "pdcxref"
+         pdcSchemaUserName: "pdc"
