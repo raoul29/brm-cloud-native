@@ -16,17 +16,16 @@ ocbc:
             ldapSkip: true
         deployment:
             fmw:
-                imageRepository: iad.ocir.io/idqji4proemh/brmcn-ps8/
+                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
                 imageName: "middleware/fmw-infrastructure_cpu"
                 imageTag: ":12.0.0.8.0"
     bcws:
-        isEnabled: true
         configEnv:
             isOPSS: false
             ldapSkip: true
         deployment:
             fmw:
-                imageRepository: iad.ocir.io/idqji4proemh/brmcn-ps8/
+                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
                 imageName: "middleware/fmw-infrastructure_cpu"
                 imageTag: ":12.0.0.8.0"
 
@@ -35,9 +34,9 @@ ocboc:
         isEnabled: false
         deployment:
             fmw:
-                imageRepository: iad.ocir.io/idqji4proemh/brmcn-ps8/
-                imageName: middleware/fmw-infrastructure_cpu
-                imageTag: :12.0.0.8.0
+                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
+                imageName: "middleware/fmw-infrastructure_cpu"
+                imageTag: :"12.0.0.8.0"
 
 
 ocpdc:
