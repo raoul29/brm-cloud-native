@@ -59,15 +59,25 @@ ocpdcrsm:
         httpClients: []
 ocbc:
     bc:
-        isEnabled: false
+        isEnabled: true
         configEnv:
             isOPSS: false
             isLDAPEnabled: false
+        deployment:
+            fmw:
+                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
+                imageName: "middleware/fmw-infrastructure_cpu"
+                imageTag: ":12.0.0.8.0"
     bcws:
-        isEnabled: false
+        isEnabled: true
         configEnv:
             isOPSS: false
             isLDAPEnabled: false
+        deployment:
+            fmw:
+                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
+                imageName: "middleware/fmw-infrastructure_cpu"
+                imageTag: ":12.0.0.8.0"          
 ocboc:
     boc:
         isEnabled: false
