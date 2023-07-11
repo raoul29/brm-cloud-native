@@ -44,3 +44,4 @@ ocpdc:
          rcuPrefix: rcupdc
          crossRefSchemaUserName: "pdcxref"
          pdcSchemaUserName: "pdc"
+         pdcAdminUser: pdcuser
