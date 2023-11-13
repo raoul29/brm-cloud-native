@@ -1,6 +1,9 @@
 # Copyright (c) 2020 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-imagePullSecrets: "brm-registry"
+imageRepository: "iad.ocir.io/id6cgo1s3kqm/brmcn15/"
+imagePullSecrets: 
+    - name: "brm-registry"
+
+uniPass: "QzFHMmIzdTQjIw=="
 
 ocbrm:
     brm_root_pass: "QzFHMmIzdTQjIw=="
