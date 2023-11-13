@@ -6,7 +6,7 @@ import javax.management.remote.JMXServiceURL as JmxUrl
 import javax.naming.Context
 
 
-String jmxServerUrl =  'service:jmx:rmi:///jndi/rmi://ecs1-0.ece-server.brm12-apps.svc.cluster.local:31022/jmxrmi'
+String jmxServerUrl =  'service:jmx:rmi:///jndi/rmi://ecs-0.ece-server.brm12-apps.svc.cluster.local:31022/jmxrmi'
 
 def attributes = new Hashtable();
 def username = "controlRole";
