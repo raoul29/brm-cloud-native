@@ -1,17 +1,21 @@
-# Copyright (c) 2021 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-imagePullSecrets: "brm-registry"
+imageRepository: "iad.ocir.io/id6cgo1s3kqm/brmcn15/"
+imagePullSecrets: 
+    - name: "oracle-registry"
+    - name: "brm-registry"
+
 uniPass: "QzFHMmIzdTQjIw=="
 
 db:    
     host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
-    port: 1521
+    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
     user: sys
     password: cGluREI5OSMjCg==
-    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
-    role: sysdba
     sslMode: "NO"
+
 ocbrm:
+    ece_deployed: true
+    pdc_deployed: true
+    EnableSecurityContext: true
     db:
         schemauser: pin
         schemapass: QzFHMmIzdTQjIw==
@@ -21,9 +25,6 @@ ocbrm:
     cm:
         deployment:
             enable_publish: 1
-    eai_js:
-        deployment:
-            eaiConfigFile: payloadconfig_ece_sync.xml
     storage_class:
         create: false
         name: rook-cephfs
@@ -38,46 +39,33 @@ ocpdc:
          pdcSchemaUserName: pdc
          crossRefSchemaUserName: xref
          pdcAdminUser: pdcuser
-         transformation:
-             supportECE: true
-             isClearBRMSeedData: true 
-             upgrade: false
-         syncPDC:
-             upgradeFromPS2: false
      service:
          type: "ClusterIP"
-     wop:
-         addOpssSecret: 
-         opssWalletSecretName: 
+     enableSecurityContext: "true"
+
 ocpdcrsm:
     isEnabled: false
-    configEnv:
-        useT3s: false
-        isInboundOauthEnabled: false
-        httpClients: []
-    secretValue:
-        httpClients: []
 ocbc:
     bc:
         isEnabled: true
         configEnv:
             isOPSS: false
             isLDAPEnabled: false
-        deployment:
-            fmw:
-                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-                imageName: "middleware/fmw-infrastructure_cpu"
-                imageTag: ":12.0.0.8.0"
+        serverPod:
+            podSecurityContext:
+               runAsUser: 1000
+               runAsGroup: 3000
+               fsGroup: 2000
     bcws:
         isEnabled: true
         configEnv:
             isOPSS: false
             isLDAPEnabled: false
-        deployment:
-            fmw:
-                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-                imageName: "middleware/fmw-infrastructure_cpu"
-                imageTag: ":12.0.0.8.0"          
+        serverPod:
+            podSecurityContext:
+               runAsUser: 1000
+               runAsGroup: 3000
+               fsGroup: 2000
 ocboc:
     boc:
         isEnabled: false
@@ -87,14 +75,6 @@ ocpcc:
 ocrsm:
     rsm:
         isEnabled: false 
-        configEnv:
-            securityEnabled: false
-            hostName: 1.2.3.4
-            baseURL: 1.2.3.4
-            rsmCertificateFileName: keyStore.p12
-        service:
-            type: NodePort
-
 
 logging:
     isEnabled: false 
