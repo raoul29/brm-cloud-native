@@ -1,43 +1,45 @@
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-imagePullSecrets: "brm-registry"
+imageRepository: "iad.ocir.io/id6cgo1s3kqm/brmcn15/"
+imagePullSecrets: 
+    - name: "oracle-registry"
+    - name: "brm-registry"
+
 uniPass: "QzFHMmIzdTQjIw=="
 db:
-    host: dbvm.workers.cluster1.oraclevcn.com
-    serviceName: PINPDB.workers.cluster1.oraclevcn.com
+    host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
+    serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
     password: cGluREI5OSMjCg==
     sslMode: 'NO'
+
 ocbrm:
+    EnableSecurityContext: true
     storage_class:
         name: rook-cephfs
+        create: false
 ocbc:
     bc:
         configEnv:
             isOPSS: false
             ldapSkip: true
-        deployment:
-            fmw:
-                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-                imageName: "middleware/fmw-infrastructure_cpu"
-                imageTag: ":12.0.0.8.0"
+        pod:
+            addOnPodSpec:
+               securityContext:
+                  runAsUser: 1000
+                  runAsGroup: 3000
+                  fsGroup: 2000
     bcws:
         configEnv:
             isOPSS: false
             ldapSkip: true
-        deployment:
-            fmw:
-                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-                imageName: "middleware/fmw-infrastructure_cpu"
-                imageTag: ":12.0.0.8.0"
+        pod:
+            addOnPodSpec:
+               securityContext:
+                  runAsUser: 1000
+                  runAsGroup: 3000
+                  fsGroup: 2000
 
 ocboc:
     boc:
         isEnabled: false
-        deployment:
-            fmw:
-                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-                imageName: "middleware/fmw-infrastructure_cpu"
-                imageTag: :"12.0.0.8.0"
-
 
 ocpdc:
      configEnv:
@@ -45,3 +47,6 @@ ocpdc:
          crossRefSchemaUserName: "pdcxref"
          pdcSchemaUserName: "pdc"
          pdcAdminUser: pdcuser
+     enableSecurityContext: "true"
+     secretValue:
+        rcuWalletSchemaPassword: cGluREI5OSMjCg==
