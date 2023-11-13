@@ -1,7 +1,0 @@
-service: 
-  type: NodePort
-  nfsNodePort: 32049
-persistence:
-  enabled: true
-  storageClass: "oci-bv"
-  size: 200Gi
