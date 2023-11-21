@@ -1,6 +1,6 @@
 # Copyright (c) 2020 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps7/"
-imagePullSecrets: "brm-registry"
+imageRepository: "lhr.ocir.io/ocuocictrng5/brmcn-ps7/"
+imagePullSecrets: ""
 
 ocbrm:
     brm_root_pass: "QzFHMmIzdTQjIw=="
