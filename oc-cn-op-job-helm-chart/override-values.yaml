@@ -1,5 +1,5 @@
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps7/"
-imagePullSecrets: "brm-registry"
+imageRepository: "lhr.ocir.io/ocuocictrng5/brmcn-ps7/"
+imagePullSecrets: ""
 uniPass: "QzFHMmIzdTQjIw=="
 
 db:
