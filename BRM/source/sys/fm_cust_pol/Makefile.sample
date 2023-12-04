@@ -21,7 +21,7 @@ CFLAGS_solaris= -g
 CFLAGS_hpux= -g -Ae +Z +DAportable
 CFLAGS_hpux_ia64= -g -Ae +Z
 CFLAGS_aix= -g -Drs6000 -D__aix -Dunix -D__unix
-CFLAGS_linux= -m32 -fPIC
+CFLAGS_linux= -m32 -fPIC -fgnu89-inline
 CFLAGS= $(CFLAGS_$(OS)) -DFOR_CM -DFM_CUST_POL_DLL
 
 CPPFLAGS = -I$(INCDIR) -DPCMCPP_CONST_SAFE -DFOR_CM -DFM_CUST_POL_DLL
@@ -78,7 +78,7 @@ tags: FRC
 ###########
 
 $(LIBCUST): $(OBJECTS) $(INCFILES) Makefile
-	$(LD) -o $(LIBCUST) $(LDFLAGS) $(OBJECTS) -lpin_cc -lm -lpsiu_for_cm -lregex
+	$(LD) -o $(LIBCUST) $(LDFLAGS) $(OBJECTS) -lpin_cc -lm
 
 $(OBJECTS): $(INCFILES) Makefile
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(FILES)
