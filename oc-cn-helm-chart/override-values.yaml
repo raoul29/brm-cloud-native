@@ -1,6 +1,6 @@
 # Copyright (c) 2021 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-imagePullSecrets: "brm-registry"
+imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
+imagePullSecrets: ""
 uniPass: "QzFHMmIzdTQjIw=="
 
 db:    
@@ -12,6 +12,7 @@ db:
     role: sysdba
     sslMode: "NO"
 ocbrm:
+    pdc_deployed: true
     db:
         schemauser: pin
         schemapass: QzFHMmIzdTQjIw==
@@ -47,8 +48,11 @@ ocpdc:
      service:
          type: "ClusterIP"
      wop:
-         addOpssSecret: 
-         opssWalletSecretName: 
+         deployment: 
+            fmw:
+                imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
+                imageName: "middleware/fmw-infrastructure_cpu"
+                imageTag: ":12.2.1.4-jdk8-ol8"         
 ocpdcrsm:
     isEnabled: false
     configEnv:
@@ -65,9 +69,9 @@ ocbc:
             isLDAPEnabled: false
         deployment:
             fmw:
-                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
+                imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
                 imageName: "middleware/fmw-infrastructure_cpu"
-                imageTag: ":12.0.0.8.0"
+                imageTag: ":12.2.1.4-jdk8-ol8"
     bcws:
         isEnabled: true
         configEnv:
@@ -75,9 +79,9 @@ ocbc:
             isLDAPEnabled: false
         deployment:
             fmw:
-                imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
+                imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
                 imageName: "middleware/fmw-infrastructure_cpu"
-                imageTag: ":12.0.0.8.0"          
+                imageTag: ":12.2.1.4-jdk8-ol8"          
 ocboc:
     boc:
         isEnabled: false
