@@ -1,4 +1,4 @@
-FROM iad.ocir.io/idqji4proemh/brmcn-ps8/cm:12.0.0.8.0
+FROM iad.ocir.io/id6cgo1s3kqm/enablement/brm15/cm:15.0.0.0.0
 
 USER root
 COPY lib/fm_cust_pol_custom.so /oms/lib/fm_cust_pol_custom.so
