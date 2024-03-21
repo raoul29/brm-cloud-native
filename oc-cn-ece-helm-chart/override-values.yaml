@@ -1,4 +1,4 @@
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
+imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
 imagePullSecrets: "brm-registry"
 secretEnv:
   uniPass: "QzFHMmIzdTQjIw=="
