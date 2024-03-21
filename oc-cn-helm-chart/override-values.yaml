@@ -85,6 +85,11 @@ ocbc:
 ocboc:
     boc:
         isEnabled: false
+        deployment:
+            fmw:
+                imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
+                imageName: "middleware/fmw-infrastructure_cpu"
+                imageTag: ":12.2.1.4-jdk8-ol8"        
 ocpcc:
     pcc:
         isEnabled: false
