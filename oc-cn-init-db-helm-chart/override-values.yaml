@@ -1,8 +1,9 @@
 # Copyright (c) 2020 Oracle Corporation and/or its affiliates. All rights reserved.
-imageRepository: "iad.ocir.io/idqji4proemh/brmcn-ps8/"
-imagePullSecrets: "brm-registry"
+imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
+imagePullSecrets: ""
 
 ocbrm:
+    pdc_deployed: true
     brm_root_pass: "QzFHMmIzdTQjIw=="
     wallet:
         client: "QzFHMmIzdTQjIw=="
