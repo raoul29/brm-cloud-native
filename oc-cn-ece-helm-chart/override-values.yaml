@@ -1,5 +1,7 @@
 imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
-imagePullSecrets: ""
+imagePullSecrets:
+    - name: "brm-registry"
+    
 secretEnv:
   uniPass: "QzFHMmIzdTQjIw=="
   PERSISTENCEDBAPASSWORD:
@@ -28,3 +30,34 @@ migration:
     connectionURL: "t3://pdc-service:8001"
 storageClass:
   name: "rook-cephfs"
+
+charging:
+    kafkaConfigurations:
+      kafkaConfigurationList:
+         - name: "BRM"
+           hostname: "kafka-cluster-kafka-brokers:9092"
+           topicName: "ecenotifications"
+           suspenseTopicName: "ecesuspensequeue"
+           failureTopicName: "ecefailurequeue"
+           overageTopicName: "eceoveragetopic"
+           partitions: "200"
+           failurePartitions: "200"
+           externalTopicEnabled: "false"
+           externalTopicName: "EceExtNotifications"
+           externalPartitions: "15"
+           walletLocation: "/home/charging/wallet/ecewallet/"
+           kafkaProducerReconnectionInterval: "2000"
+           kafkaProducerReconnectionMax: "30000"
+           kafkaDGWReconnectionInterval: "2000"
+           kafkaDGWReconnectionMax: "30000"
+           kafkaBRMReconnectionInterval: "2000"
+           kafkaBRMReconnectionMax: "30000"
+           kafkaHTTPReconnectionInterval: "2000"
+           kafkaHTTPReconnectionMax: "30000"
+           persistFailedRequestsToKafkaTopic: "false"
+           kafkaCDRTopicName: "ChfChargingRecords"
+           kafkaCDRPartitions: "1"
+           kafkaSSLEnabled: "false"
+           kafkaTrustStoreLocation: ""
+           kafkaCDRCompressionType: "gzip"
+
