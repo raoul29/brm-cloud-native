@@ -1,5 +1,7 @@
 imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
-imagePullSecrets: ""
+imagePullSecrets: 
+    - name: "brm-registry"
+
 uniPass: "QzFHMmIzdTQjIw=="
 db:
     host: dbvm.sub3b8b1321d.cluster1.oraclevcn.com
