@@ -11,6 +11,7 @@ db:
 ocbrm:
     pdc_deployed: true
     storage_class:
+        create: false
         name: rook-cephfs
 ocbc:
     bc:
