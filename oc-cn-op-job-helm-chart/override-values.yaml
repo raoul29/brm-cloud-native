@@ -49,6 +49,9 @@ ocpdc:
          crossRefSchemaUserName: "pdcxref"
          pdcSchemaUserName: "pdc"
          pdcAdminUser: pdcuser
+     secretValue:
+         rcuWalletSchemaPassword: "QzFHMmIzdTQjIw=="
+
      deployment:
         fmw:
           imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
