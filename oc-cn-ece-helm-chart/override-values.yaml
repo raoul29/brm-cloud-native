@@ -1,6 +1,5 @@
 imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
-imagePullSecrets:
-    - name: "brm-registry"
+imagePullSecrets: "brm-registry"
     
 secretEnv:
   uniPass: "QzFHMmIzdTQjIw=="
