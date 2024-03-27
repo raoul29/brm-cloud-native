@@ -43,7 +43,6 @@ ocpdc:
          pdcAdminUser: pdcuser
          transformation:
              supportECE: true
-             isClearBRMSeedData: true 
              upgrade: false
          syncPDC:
              upgradeFromPS2: false
@@ -55,6 +54,12 @@ ocpdc:
                 imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
                 imageName: "middleware/fmw-infrastructure_cpu"
                 imageTag: ":12.2.1.4-jdk8-ol8"         
+     deployment:
+        fmw:
+          imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
+          imageName: "middleware/fmw-infrastructure_cpu"
+          imageTag: ":12.2.1.4-jdk8-ol8"
+
 ocpdcrsm:
     isEnabled: false
     configEnv:
