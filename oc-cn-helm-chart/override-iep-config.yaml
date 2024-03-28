@@ -3,5 +3,5 @@ ocpdc:
         importExport:
             IE_Operation: import
             IE_Component: config
-            IE_FileName: Config4_sample.xml
-            extraCmdLineArgs: -ow
+            IE_File_OR_Dir_Name: Config_BRM15.xml
+            extraCmdLineArgs: "-ow -ignoreID"
