@@ -3,5 +3,5 @@ ocpdc:
         importExport:
             IE_Operation: import
             IE_Component: pricing
-            IE_FileName: Pricing5_sample.xml
-            extraCmdLineArgs: -ow
+            IE_File_OR_Dir_Name: Pricing_BRM15_Test20.xml
+            extraCmdLineArgs: "-ow -ignoreID"
