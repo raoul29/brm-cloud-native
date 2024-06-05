@@ -1,5 +1,5 @@
 imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
-imagePullSecrets: "brm-registry"
+imagePullSecrets: ""
     
 secretEnv:
   uniPass: "QzFHMmIzdTQjIw=="
@@ -34,9 +34,9 @@ charging:
     kafkaConfigurations:
       kafkaConfigurationList:
          - name: "BRM"
-           hostname: "kafka-cluster-kafka-brokers:9092"
-           topicName: "ecenotifications"
-           suspenseTopicName: "ecesuspensequeue"
+           hostname: "ece-kafka:9093"
+           topicName: "ECENotifications"
+           suspenseTopicName: "ECESuspenseQueue"
            failureTopicName: "ecefailurequeue"
            overageTopicName: "eceoveragetopic"
            partitions: "200"
