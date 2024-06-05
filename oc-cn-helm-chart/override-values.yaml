@@ -1,7 +1,7 @@
 # Copyright (c) 2021 Oracle Corporation and/or its affiliates. All rights reserved.
 imageRepository: "iad.ocir.io/id6cgo1s3kqm/enablement/brm15/"
 imagePullSecrets:
-    - name: "brm-registry"
+    - name: ""
 
 uniPass: "QzFHMmIzdTQjIw=="
 
