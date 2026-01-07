@@ -2,7 +2,7 @@ for node in `kubectl get nodes | grep node | awk '{print$1}'`
 do
 
 ssh -o "StrictHostKeyChecking no"  opc@$node << EOF  2> /dev/null
-sudo parted /dev/sda print free
+sudo parted /dev/sdb print free
 exit
 EOF
 
