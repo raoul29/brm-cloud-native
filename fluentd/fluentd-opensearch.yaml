@@ -60,7 +60,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: fluentd
-        image: fluent/fluentd-kubernetes-daemonset:v1.14-debian-opensearch-1
+        image: docker.io/fluent/fluentd-kubernetes-daemonset:v1.14-debian-opensearch-1
         env:
           - name:  FLUENT_OPENSEARCH_SSL_VERIFY 
             value: "false" 
