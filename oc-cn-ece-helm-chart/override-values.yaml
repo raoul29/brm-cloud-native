@@ -60,3 +60,6 @@ charging:
            kafkaTrustStoreLocation: ""
            kafkaCDRCompressionType: "gzip"
 
+sslconnectioncertificates:
+  SSLENABLED: "false"
+
