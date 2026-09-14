@@ -28,3 +28,6 @@ migration:
     connectionURL: "t3://pdc-service:8001"
 storageClass:
   name: "rook-cephfs"
+
+sslconnectioncertificates:
+  SSLENABLED: "false"
