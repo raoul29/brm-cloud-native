@@ -11,6 +11,7 @@ db:
     serviceName: PINPDB.sub3b8b1321d.cluster1.oraclevcn.com
     sslMode: 'NO'
 ocbrm:
+    isSSLEnabled: false
     db:
         schemauser: pin
         schemapass: QzFHMmIzdTQjIw==
