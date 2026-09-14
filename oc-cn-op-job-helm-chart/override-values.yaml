@@ -9,6 +9,7 @@ db:
     password: cGluREI5OSMjCg==
     sslMode: 'NO'
 ocbrm:
+    isSSLEnabled: false
     pdc_deployed: true
     storage_class:
         create: false
