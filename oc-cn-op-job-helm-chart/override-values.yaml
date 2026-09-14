@@ -10,6 +10,7 @@ db:
 
 
 ocbrm:
+    isSSLEnabled: false
     storage_class:
         name: rook-cephfs
 
