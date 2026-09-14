@@ -14,6 +14,7 @@ db:
     role: sysdba
     sslMode: "NO"
 ocbrm:
+    isSSLEnabled: false
     pdc_deployed: true
     db:
         schemauser: pin
