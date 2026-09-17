@@ -63,3 +63,62 @@ charging:
 sslconnectioncertificates:
   SSLENABLED: "false"
 
+emgateway:
+   serviceFqdn: "ece-emg"
+   emGatewayList:
+      - coherenceMemberName: "emgateway1"
+        jmxport: ""
+        replicas: 1
+        jmxEnabled: true
+        coherencePort:
+        jvmGCOpts: "-XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+PrintTenuringDistribution -XX:+PrintAdaptiveSizePolicy -XX:-UseGCLogFileRotation -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -XX:GCPauseIntervalMillis=200 -XX:NumberOfGCLogFiles=99"
+        jvmJMXOpts: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false "
+        jvmCoherenceOpts: "-Dpof.config=charging-pof-config.xml -Dcoherence.override=charging-coherence-override-dev.xml  -Dcoherence.security=false -Dsecure.access.name=admin"
+        jvmOpts: "-Dece.metrics.http.service.enabled=true"
+        restartCount: "0"
+        emGatewayConfiguration:
+           name: "emgateway1"
+           port: "15502"
+           threadPoolSize: "10"
+           sslEnabled: "0"
+           socketKeepAlive: "1"
+           wallet: "/home/charging/wallet/brmwallet/server/cwallet.sso"
+           clientAuthenticationEnabled: "0"
+           updateResponseTimeout: "30000"
+
+      - coherenceMemberName: "emgateway2"
+        jmxport: ""
+        replicas: 1
+        jmxEnabled: true
+        coherencePort:
+        jvmGCOpts: "-XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+PrintTenuringDistribution -XX:+PrintAdaptiveSizePolicy -XX:-UseGCLogFileRotation -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -XX:GCPauseIntervalMillis=200 -XX:NumberOfGCLogFiles=99"
+        jvmJMXOpts: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false "
+        jvmCoherenceOpts: "-Dpof.config=charging-pof-config.xml -Dcoherence.override=charging-coherence-override-dev.xml  -Dcoherence.security=false -Dsecure.access.name=admin"
+        jvmOpts: "-Dece.metrics.http.service.enabled=true"
+        restartCount: "0"
+        emGatewayConfiguration:
+           name: "emgateway2"
+           port: "15502"
+           threadPoolSize: "10"
+           sslEnabled: "0"
+           socketKeepAlive: "1"
+           wallet: "/home/charging/wallet/brmwallet/server/cwallet.sso"
+           clientAuthenticationEnabled: "0"
+           updateResponseTimeout: "30000"
+
+charging:
+   connectionConfigurations:
+         BRMConnectionConfiguration:
+            name: "brmConnection"
+            hostName: "cm"
+            protocol: "pcp"
+            loginName: "root.0.0.0.1"
+            cmPort: "11960"
+            loginType: "1"
+            numberOfConnections: "10"
+            sslEnabled: "0"
+            failOverConnectionUrls: ""
+            eceWalletLocation: "/home/charging/wallet/ecewallet/"
+            brmwallet: "/home/charging/wallet/brmwallet/client/cwallet.sso"
+
+
